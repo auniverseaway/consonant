@@ -259,6 +259,19 @@
         padding: 0;
     }
 
+    /* Split - Half */
+    .aside.split.half .background img {
+        max-width: 50vw;
+    }
+
+    .aside.split.half .foreground.container .text {
+        flex: 0 0 44%;
+    }
+
+    .aside.split.half .foreground.container .image {
+        flex: 0 0 53%;
+    }
+
     /* Augmented Image */
 
     .aside.augmented-image .background.augmented {
