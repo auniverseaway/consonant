@@ -1,0 +1,292 @@
+
+:root {
+  --grid-container-width-s: 800px;
+  --grid-container-width-m: 1000px;
+  --grid-container-width-l: 1200px;
+}
+
+.media {
+  margin: 0 auto;
+  position: relative;
+}
+
+.media.dark {
+  color: #fff;
+}
+
+.media .background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media .background picture {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.media .background img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.media > div.media-row {
+    padding: var(--spacing-m) 0;
+    max-width: var(--grid-container-width);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    gap:  var(--spacing-ml);
+    position: relative;
+    flex-direction: column;
+}
+
+.media.medium > div.media-row {
+  gap: 40px;
+}
+.media.large > div.media-row {
+  gap: 56px;
+}
+
+.media.large  > div.media-row .text {
+  width: 42%;
+}
+.media.large  > div.media-row .image {
+  width: 58%;
+}
+
+.media.media-reverse-mobile > div {
+    flex-direction: column-reverse;
+}
+
+
+.media > div.media-row > div {
+    width: 100%;
+}
+
+/*.media > div.media-row > div:first-of-type {*/
+/*    margin-right: var(--spacing-m);*/
+/*}*/
+
+.media .text .detail-S,
+.media .text .detail-M {
+  margin-bottom: var(--spacing-xs);
+}
+.media.medium .text .detail-M {
+  margin-bottom: var(--spacing-s);
+}
+
+.media .text .detail-L {
+  margin-bottom: var(--spacing-s);
+}
+
+.media .text .heading-XS,
+.media .text .heading-S {
+  margin-bottom: var(--spacing-xs);
+}
+
+.media .text .heading-M,
+.media .text .heading-L,
+.media .text .heading-XL {
+  margin-bottom: var(--spacing-s);
+}
+
+.media .text .body-S {
+  margin-bottom: var(--spacing-s);
+}
+
+.media .text .body-M {
+  margin-bottom: 24px;
+}
+
+.media .text img {
+  max-height: 56px;
+}
+
+.media .text .action-area {
+  display: flex;
+  margin: 0;
+  gap: 24px;
+}
+
+.media .text .product-area {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 24px 0;
+  gap: var(--spacing-xs) var(--spacing-s);
+}
+
+.media .text .icon {
+  text-transform: capitalize;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-primary);
+  margin: 0;
+  padding: 0;
+}
+
+.media .text .icon:hover {
+  text-decoration: underline;
+}
+
+.media .text .icon img{
+  padding-right: 12px;
+}
+
+.media.dark .text .icon {
+  color: white;
+}
+
+.media .image img {
+  display: block;
+  width: 100%;
+}
+
+
+/* Media Multiple */
+.media.multiple .media-container {
+  max-width: var(--grid-container-width);
+  margin: 0 auto;
+  padding: var(--spacing-m) 0;
+  position: relative;
+}
+.media.multiple .media-container > div.media-row {
+  width: 100%;
+  display: block;
+  max-width: 100%;
+  padding-bottom: var(--spacing-l);
+}
+.media.multiple .media-container > div.media-row > div:first-of-type {
+  margin-right: 0;
+  margin-bottom: var(--spacing-m);
+}
+
+@media screen and (min-width: 600px) {
+
+  .media.media-reverse-mobile > div {
+    flex-direction: row;
+  }
+  .media > div.media-row {
+    flex-direction: row;
+    max-width: var(--grid-container-width-s);
+    margin: 0 var(--spacing-m);
+  }
+  .media.medium  > div.media-row {
+    max-width: var(--grid-container-width-m);
+  }
+  .media.large  > div.media-row {
+    max-width: var(--grid-container-width-l);
+  }
+
+  .media > div.media-row-odd > div:first-child {
+    order: 2;
+  }
+
+  .media.media--reversed > div > div:first-child {
+    order: 2;
+  }
+
+  /* Media Multi */
+  .media.multiple .media-container > div.media-row {
+    padding-bottom: 0;
+  }
+
+  .media.multiple.columns-2 .media-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: var(--spacing-s);
+  }
+
+  .media.multiple.columns-3 .media-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: var(--spacing-s);
+  }
+
+  .media.multiple.columns-4 .media-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: var(--spacing-s);
+  }
+
+  .media.multiple.columns-2.z-pattern .media-container,
+  .media.multiple.columns-3.z-pattern .media-container,
+  .media.multiple.columns-4.z-pattern .media-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .media.multiple.columns-2.z-pattern .media-container .media-row,
+  .media.multiple.columns-3.z-pattern .media-container .media-row,
+  .media.multiple.columns-4.z-pattern .media-container .media-row {
+    padding: 0;
+    max-width: var(--grid-container-width);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:  var(--spacing-m);
+    position: relative;
+  }
+
+  .media.multiple.columns-2.z-pattern .media-container .media-row.z-row-odd,
+  .media.multiple.columns-3.z-pattern .media-container .media-row.z-row-odd,
+  .media.multiple.columns-4.z-pattern .media-container .media-row.z-row-odd {
+    flex-direction: row-reverse;
+  }
+
+  .media.multiple.columns-2.z-pattern .media-container .media-row > div:first-of-type,
+  .media.multiple.columns-3.z-pattern .media-container .media-row > div:first-of-type,
+  .media.multiple.columns-4.z-pattern .media-container .media-row > div:first-of-type {
+    margin-right: var(--spacing-m);
+    margin-bottom: 0;
+  }
+
+  .media.multiple.columns-2.z-pattern .media-container .media-row > div,
+  .media.multiple.columns-3.z-pattern .media-container .media-row > div,
+  .media.multiple.columns-4.z-pattern .media-container .media-row > div {
+    flex: 0 0 50%;
+  }
+
+}
+
+
+@media screen and (min-width: 800px) {
+  .media > div.media-row {
+    margin: 0 auto;
+  }
+  .media.medium > div.media-row,
+  .media.large > div.media-row {
+    margin: 0 var(--spacing-m);
+  }
+}
+@media screen and (min-width: 1000px) {
+  .media.medium > div.media-row {
+    margin: 0 auto;
+  }
+  .media.large > div.media-row {
+    margin: 0 var(--spacing-m);
+  }
+  .media.multiple.columns-2 .media-container {
+    max-width: var(--grid-container-width-m);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .media.large > div.media-row {
+    margin: 0 auto;
+  }
+}

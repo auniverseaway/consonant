@@ -13,75 +13,19 @@
 /*
  * Z-Pattern - v0.0.1
  */
-
-function isOdd(num) { return num % 2 ? 'z-row-odd' : 'z-row-even'; }
-
-function decorateButtons(el) {
-  const buttons = el.querySelectorAll('em a, strong a');
-  buttons.forEach((button) => {
-    const parent = button.parentElement;
-    const buttonType = parent.nodeName === 'STRONG' ? 'blue' : 'outline';
-    button.classList.add('con-button', buttonType);
-    parent.insertAdjacentElement('afterend', button);
-    parent.remove();
-  });
-  if (buttons.length > 0) {
-    buttons[0].closest('p').classList.add('action-area');
-  }
-}
-
-function decorateIcons(el) {
-  const regex = /[^{\{]+(?=}\})/g; // {{value}}
-  const placeholders = el.textContent.match(regex);
-  placeholders.forEach( (str) => {
-    // todo: get this placeholder data from docs
-    const svg = `<img width="40" alt="Adobe Illustrator CC icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/512px-Adobe_Illustrator_CC_icon.svg.png">`;
-    const url = `#`;
-    el.innerHTML = el.innerHTML.replace(`{{${str}}}`, `<a class="body-S icon ${str}" href="${url}">${svg} ${str.split('-')[1]}</a>`);
-  });
-  const icons = el.querySelectorAll('.icon');
-  if (icons.length > 0) {
-    icons[0].closest('p').classList.add('product-area');
-  }
-}
-
-function decorateText(el, size) {
-  const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
-  const heading = headings[headings.length - 1];
-  if (!size) {
-    heading.classList.add('heading-XS');
-    heading.nextElementSibling.classList.add('body-S');
-    if (heading.previousElementSibling) {
-      heading.previousElementSibling.classList.add('detail-M');
-    }
-  }
-  if (size === 'm') {
-    heading.classList.add('heading-M');
-    heading.nextElementSibling.classList.add('body-S');
-    if (heading.previousElementSibling) {
-      heading.previousElementSibling.classList.add('detail-M');
-    }
-  }
-  if (size === 'l') {
-    heading.classList.add('heading-XL');
-    heading.nextElementSibling.classList.add('body-M');
-    if (heading.previousElementSibling) {
-      heading.previousElementSibling.classList.add('detail-L');
-    }
-  }
-}
+import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
 
 function getBlockSize(el) {
   if (el.classList.contains('medium')) {
-    return 'm';
+    return 'medium';
   }else if (el.classList.contains('large')) {
-    return 'l';
+    return 'large';
   }else{
-    return null;
+    return 'small';
   }
 }
 
-export default function init(block)  {
+const init = async (block) => {
     const h1 = block.querySelector('h1');
     if (h1) {
         h1.parentElement.parentElement.classList.add('z-pattern-heading');
@@ -89,16 +33,33 @@ export default function init(block)  {
     }
     const size = getBlockSize(block);
     const zRows = block.querySelectorAll(':scope > div:not([class])');
-    zRows.forEach((row, idx) => {
-        row.classList.add(isOdd(idx));
-        const text = row.querySelector('h1, h2, h3, h4, h5, h6').closest('div');
-        text.classList.add('text');
-        const image = row.querySelector(':scope > div:not([class])');
-        if (image) {
-          image.classList.add('image');
-        }
-        decorateText(text, size);
-        decorateIcons(text);
-        decorateButtons(text);
+    zRows.forEach((mediaBlock, idx) => {
+        mediaBlock.classList.add('media');
+        decorateBlock(mediaBlock);
+        const mediaRow = document.createElement('div');
+        const children = mediaBlock.querySelectorAll(':scope > div');
+        children.forEach((child) => {
+          mediaRow.appendChild(child);
+        });
+        mediaBlock.classList.add(size);
+        mediaBlock.appendChild(mediaRow);
+        loadBlock(mediaBlock);
     });
+
+    // // Check how many z-rows are ordered Image/Copy
+    let zRowsOddCount = 0;
+    zRows.forEach((row) => {
+      const mediaWrapper = row.querySelector(':scope > div');
+      const rowLeftToRight = mediaWrapper.querySelector(':scope > div:first-of-type').classList.contains('text');
+      if (rowLeftToRight) zRowsOddCount++;
+    });
+
+    // // If all rows are ordered Image/Copy add alternating rtl class
+    if(zRowsOddCount === 0){
+      zRows.forEach((row, i) => {
+        if ( i % 2 ) row.classList.add('media--reversed');
+      });
+    }
 }
+
+export default init;
