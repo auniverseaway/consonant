@@ -28,10 +28,11 @@ function decorateButtons(el) {
     }
 }
 
-function decorateText(el) {
+function decorateText(el, vertical) {
     const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
     const heading = headings[headings.length - 1];
-    heading.classList.add('heading-XL');
+    if (vertical) heading.classList.add('heading-S');
+    else heading.classList.add('heading-XL');
     heading.nextElementSibling.classList.add('body-M');
     if (heading.previousElementSibling) {
         heading.previousElementSibling.classList.add('icon-img');
@@ -57,6 +58,6 @@ export default function init(el) {
         const image = item.querySelector(':scope > div:not([class])');
         if (image) image.classList.add('image');
         decorateButtons(item);
-        decorateText(item);
+        decorateText(item, el.classList.contains('vertical'));
     }
 }

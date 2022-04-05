@@ -35,8 +35,8 @@
 .icon-block .background img {
     object-fit: cover;
     width: 100%;
-    min-height: 700px;
     height: 100%;
+    min-height: 700px;
 }
 
 .icon-block .foreground.container {
@@ -47,15 +47,6 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-}
-
-.icon-block.vertical .foreground.container {
-    text-align: left;
-}
-
-.icon-block.vertical .foreground.container .text .icon-img {
-    margin: 0;
-    margin-bottom: 16px;
 }
 
 .icon-block .foreground.container .text {
@@ -77,10 +68,9 @@
     width: 100%;
 }
 
-.icon-block .foreground.container .text .heading-XL {
+.icon-block .foreground.container .text .heading-XL,
+.icon-block .foreground.container .text .heading-S {
     margin: var(--spacing-s) 0;
-    font-size: var(--type-heading-l-size);
-    line-height: var(--type-heading-l-lh);
 }
 
 .icon-block .foreground.container .text .body-M {
@@ -93,22 +83,58 @@
 
 .icon-block .foreground.container .text .action-area>a {
     margin-right: var(--spacing-m);
+    white-space: nowrap;
 }
+
+.icon-block .foreground.container .text .action-area>a:last-child {
+    margin: 0;
+}
+
 
 .icon-block .foreground.container div {
     flex: 1 1 auto;
 }
 
+/* Vertical */
+
+.icon-block.vertical .foreground.container {
+    text-align: left;
+}
+
+.icon-block.vertical .foreground.container .text .icon-img {
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.icon-block.vertical .foreground.container .text .action-area>a:not(.con-button) {
+    font-size: 14px;
+    line-height: 21px;
+}
+
+
 /* Tablet */
 
 @media screen and (min-width: 768px) {
-    .icon-block.vertical .foreground.container {
-        flex-direction: row;
-        gap: 30px;
+    .icon-block .foreground.container .text .icon-img {
+        max-width: 234px;
     }
 
-    .icon-block.vertical .foreground.container .text .icon-img {
-        max-width: 234px;
+    /* Vertical */
+
+    .icon-block.vertical .foreground.container {
+        gap: 32px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .icon-block.vertical .foreground.container .text {
+        flex: 1 1 45%;
+    }
+
+
+    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text:last-child {
+        padding-right: 55%;
     }
 }
 
@@ -128,7 +154,34 @@
         max-width: 400px;
     }
 
+    /* Vertical */
+
     .icon-block.vertical .foreground.container {
-        gap: 50px;
+        flex-wrap: nowrap;
+    }
+
+    .icon-block.vertical .foreground.container .text {
+        flex: 1 1 25%;
+    }
+
+    /* Vertical icon style based on number of items */
+
+    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text:last-child {
+        padding-right: 0;
+    }
+
+    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(2) .icon-img,
+    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(2)~.text .icon-img {
+        max-width: 400px !important;
+    }
+
+    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3) .icon-img,
+    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text .icon-img {
+        max-width: 300px !important;
+    }
+
+    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(4) .icon-img,
+    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(4)~.text .icon-img {
+        max-width: 276px !important;
     }
 }
