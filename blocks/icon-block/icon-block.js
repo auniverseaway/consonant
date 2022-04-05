@@ -17,41 +17,46 @@
 function decorateButtons(el) {
     const buttons = el.querySelectorAll('em a, strong a');
     buttons.forEach((button) => {
-      const parent = button.parentElement;
-      const buttonType = parent.nodeName === 'STRONG' ? 'blue' : 'outline';
-      button.classList.add('con-button', buttonType);
-      parent.insertAdjacentElement('afterend', button);
-      parent.remove();
+        const parent = button.parentElement;
+        const buttonType = parent.nodeName === 'STRONG' ? 'blue' : 'outline';
+        button.classList.add('con-button', buttonType);
+        parent.insertAdjacentElement('afterend', button);
+        parent.remove();
     });
     if (buttons.length > 0) {
-      buttons[0].closest('p').classList.add('action-area');
+        buttons[0].closest('p').classList.add('action-area');
     }
-  }
-  
-  function decorateText(el) {
+}
+
+function decorateText(el) {
     const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
     const heading = headings[headings.length - 1];
     heading.classList.add('heading-XL');
     heading.nextElementSibling.classList.add('body-M');
     if (heading.previousElementSibling) {
-      heading.previousElementSibling.classList.add('detail-M');
+        heading.previousElementSibling.classList.add('icon-img');
     }
-  }
-  
-  export default function init(el) {
+}
+
+function decorateBackground(el) {
+    const background = el[0];
+    background.classList.add('background');
+    if (!background.querySelector(':scope img')) {
+        background.children[0].style.display = "none";
+        background.setAttribute('style', `background: ${background.textContent}`);
+    }
+}
+
+export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
+    if (children.length > 1) decorateBackground(children);
     const foreground = children[children.length - 1];
-    if (children.length > 1) {
-      children[0].classList.add('background');
-    }
     foreground.classList.add('foreground', 'container');
-    const text = foreground.querySelector('h1, h2, h3, h4, h5, h6').closest('div');
-    text.classList.add('text');
-    const image = foreground.querySelector(':scope > div:not([class])');
-    if (image) {
-      image.classList.add('image');
+    for (let item of foreground.children) {
+        item.classList.add("text");
+        const image = item.querySelector(':scope > div:not([class])');
+        if (image) image.classList.add('image');
+        decorateButtons(item);
+        decorateText(item);
     }
-    decorateButtons(text);
-    decorateText(text);
-  }
-  
+}

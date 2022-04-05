@@ -1,0 +1,134 @@
+/* icon-block Block */
+
+.icon-block {
+    display: none;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.icon-block[data-block-status="loaded"] {
+    display: flex;
+}
+
+.icon-block p {
+    margin: 0;
+}
+
+/* Standard */
+
+.icon-block .background {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.icon-block .background>div {
+    height: 100%;
+}
+
+.icon-block .background img {
+    object-fit: cover;
+    width: 100%;
+    min-height: 700px;
+    height: 100%;
+}
+
+.icon-block .foreground.container {
+    padding-top: 80px;
+    display: flex;
+    position: relative;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.icon-block.vertical .foreground.container {
+    text-align: left;
+}
+
+.icon-block.vertical .foreground.container .text .icon-img {
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.icon-block .foreground.container .text {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.icon-block .foreground.container .text .icon-img {
+    margin: 0 auto 16px auto;
+    height: 80px;
+    max-width: 234px;
+    overflow: hidden;
+}
+
+.icon-block .foreground.container .text>* {
+    width: 100%;
+}
+
+.icon-block .foreground.container .text .heading-XL {
+    margin: var(--spacing-s) 0;
+    font-size: var(--type-heading-l-size);
+    line-height: var(--type-heading-l-lh);
+}
+
+.icon-block .foreground.container .text .body-M {
+    margin-bottom: var(--spacing-m);
+}
+
+.icon-block .foreground.container .text .action-area {
+    margin-bottom: 0;
+}
+
+.icon-block .foreground.container .text .action-area>a {
+    margin-right: var(--spacing-m);
+}
+
+.icon-block .foreground.container div {
+    flex: 1 1 auto;
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .icon-block.vertical .foreground.container {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .icon-block.vertical .foreground.container .text .icon-img {
+        max-width: 234px;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1200px) {
+    .icon-block .foreground.container {
+        padding: 104px 0;
+    }
+
+    .icon-block .foreground.container .text {
+        width: 65%;
+        margin: 0 auto;
+    }
+
+    .icon-block .foreground.container .text .icon-img {
+        max-width: 400px;
+    }
+
+    .icon-block.vertical .foreground.container {
+        gap: 50px;
+    }
+}
