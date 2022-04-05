@@ -14,7 +14,7 @@
  * Z-Pattern - v0.0.1
  */
 
-import { decorateText, decorateIcons, decorateButtons} from "../../scripts/decorate";
+import { decorateText, decorateIcons, decorateButtons} from "../../scripts/decorate.js";
 
 function getBlockSize(el) {
   if (el.classList.contains('medium')) {
