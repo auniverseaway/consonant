@@ -219,7 +219,7 @@ body {
 
 .con-button.outline {
   color: #000;
-  background: #fff;
+  background: transparent;
   border: 2px solid rgb(0, 0, 0);
 }
 
