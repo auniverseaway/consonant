@@ -16,10 +16,12 @@
 
 :root {
   /* Typography */
+  --type-transform: uppercase;
   --type-detail-all-weight: 700;
   --type-detail-m-size: 12px;
   --type-detail-m-lh: 15px;
-  --type-detail-m-transform: uppercase;
+  --type-detail-l-size: 16px;
+  --type-detail-l-lh: 20px;
 
   --type-heading-all-weight: 700;
   --type-heading-xl-size: 36px;
@@ -39,8 +41,10 @@
   --type-body-s-lh: 24px;
 
   /* Spacing */
+  --spacing-xs: 8px;
   --spacing-s: 16px;
   --spacing-m: 24px;
+  --spacing-ml: 32px;
   --spacing-l: 48px;
   --spacing-xl: 56px;
   --spacing-xxl: 80px;
@@ -48,6 +52,25 @@
   /* Grid */
   --grid-container-width: 83.4%;
   --grid-column-width: 7.025%;
+
+  /* Block Conainer */
+  --block-container-width-s: 800px;
+  --block-container-width-m: 1000px;
+  --block-container-width-l: 1200px;
+
+  /* Color */
+  --hue: 213;
+  /*the base hue*/
+  --saturation: 84%;
+  /*the base saturation*/
+  --light: 49%;
+  /*the base lightness*/
+  --blue-hsl: var(--hue), var(--saturation), var(--light);
+  /* adobe blue #1473e6 */
+
+  --color-primary: #1473e6;
+  --color-primary-darker: hsl(var(--hue), var(--saturation), calc(var(--light) - 10%));
+  --color-primary-lighter: hsl(var(--hue), var(--saturation), calc(var(--light) + 20%));
 }
 
 @media screen and (min-width: 1440px) {
@@ -118,11 +141,25 @@ body {
   margin: 0;
 }
 
+.body-S {
+  font-size: var(--type-body-s-size);
+  line-height: var(--type-body-s-lh);
+  margin: 0;
+}
+
 .detail-M {
   font-size: var(--type-detail-m-size);
   line-height: var(--type-detail-m-lh);
   font-weight: var(--type-detail-all-weight);
-  text-transform: var(--type-detail-m-transform);
+  text-transform: var(--type-transform);
+  margin: 0;
+}
+
+.detail-L {
+  font-size: var(--type-detail-l-size);
+  line-height: var(--type-detail-l-lh);
+  font-weight: var(--type-detail-all-weight);
+  text-transform: var(--type-transform);
   margin: 0;
 }
 
@@ -146,13 +183,19 @@ body {
 
 .con-button.blue {
   color: #FFF;
-  background: rgb(20, 115, 230);
-  border: 2px solid rgb(20, 115, 230);
+  background: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.con-button.blue:hover,
+.con-button.blue:active {
+  background: var(--color-primary-darker);
+  border: 2px solid var(--color-primary-darker);
 }
 
 .con-button.outline {
   color: #000;
-  background: transparent;
+  background: #fff;
   border: 2px solid rgb(0, 0, 0);
 }
 
