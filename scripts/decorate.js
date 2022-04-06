@@ -10,6 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
+
 export function decorateButtons(el) {
   const buttons = el.querySelectorAll('em a, strong a');
   buttons.forEach((button) => {

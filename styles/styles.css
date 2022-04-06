@@ -53,7 +53,7 @@
     --grid-container-width: 83.4%;
     --grid-column-width: 7.025%;
 
-    /* Block Conainer */
+    /* Block Container */
     --block-container-width-s: 800px;
     --block-container-width-m: 1000px;
     --block-container-width-l: 1200px;
@@ -116,6 +116,30 @@ body {
     line-height: var(--type-heading-xl-lh);
     font-weight: var(--type-heading-all-weight);
     margin: 0;
+}
+
+.heading-L {
+  font-size: var(--type-heading-l-size);
+  line-height: var(--type-heading-l-lh);
+  font-weight: var(--type-heading-all-weight);
+  margin: 0;
+}
+
+.heading-XL {
+  font-size: var(--type-heading-xl-size);
+  line-height: var(--type-heading-xl-lh);
+  font-weight: var(--type-heading-all-weight);
+  margin: 0;
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --type-heading-xl-size: 48px;
+    --type-heading-l-size: 36px;
+    --type-heading-m-size: 26px;
+    --type-heading-s-size: 24px;
+    --type-heading-xs-size: 22px;
+  }
 }
 
 .body-M {
