@@ -10,32 +10,19 @@
  * governing permissions and limitations under the License.
  */
 
-import { decorateContent, decorateIcons } from "../../scripts/decorate.js";
-
 /*
- * Icon Block - v0.0.1
- */
+* Icon Block - v0.0.1
+*/
 
-function decorateBackground(el) {
-    const background = el[0];
-    background.classList.add('background');
-    if (!background.querySelector(':scope img')) {
-        background.children[0].style.display = 'none';
-        background.setAttribute('style', `background: ${background.textContent}`);
-    }
-}
+import { decorateButtons, decorateContent, decorateIcons, decorateLayout } from "../../scripts/decorate.js";
 
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
-    if (children.length > 1) decorateBackground(children);
-    const foreground = children[children.length - 1];
-    foreground.classList.add('foreground', 'container');
-    for (let item of foreground.children) {
-        item.classList.add('text');
-        const image = item.querySelector(':scope > div:not([class])');
-        if (image) image.classList.add('image');
+    const content = decorateLayout(children);
+    for (let item of content.children) {
         const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
         decorateContent(item, ['product-area', headingClass, 'body-M']);
+        decorateButtons(item);
     }
     decorateIcons(el, false);
 }
