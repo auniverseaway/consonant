@@ -20,6 +20,6 @@ export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
     const content = decorateLayout(children);
     decorateContent(content, ['detail-M', 'heading-XL', 'body-S']);
-    decorateIcons(el, false);
     decorateButtons(content);
+    decorateIcons(el, false);
 }
