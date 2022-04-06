@@ -16,9 +16,6 @@
 
 :root {
   /* Typography */
-  --type-transform: uppercase;
-  --type-detail-all-weight: 700;
-
   --type-detail-xl-size: 20px;
   --type-detail-xl-lh: 25px;
   --type-detail-l-size: 16px;
@@ -26,17 +23,21 @@
   --type-detail-m-size: 12px;
   --type-detail-m-lh: 15px;
 
-  --type-heading-all-weight: 700;
-  --type-heading-xl-size: 36px;
-  --type-heading-xl-lh: 45px;
-  --type-heading-l-size: 28px;
-  --type-heading-l-lh: 35px;
-  --type-heading-m-size: 24px;
-  --type-heading-m-lh: 30px;
-  --type-heading-s-size: 20px;
-  --type-heading-s-lh: 25px;
-  --type-heading-xs-size: 18px;
-  --type-heading-xs-lh: 22.5px;
+  --type-heading-weight: 700;
+  --type-heading-xxxl-size: 44px;
+  --type-heading-xxxl-lh: 55px;
+  --type-heading-xxl-size: 36px;
+  --type-heading-xxl-lh: 45px;
+  --type-heading-xl-size: 28px;
+  --type-heading-xl-lh: 35px;
+  --type-heading-l-size: 24px;
+  --type-heading-l-lh: 30px;
+  --type-heading-m-size: 20px;
+  --type-heading-m-lh: 25px;
+  --type-heading-s-size: 18px;
+  --type-heading-s-lh: 22.5px;
+  --type-heading-xs-size: 16px;
+  --type-heading-xs-lh: 20px;
 
   --type-body-xxl-size: 28px;
   --type-body-xxl-lh: 42px;
@@ -78,7 +79,7 @@
   --grid-container-width: 83.4%;
   --grid-column-width: 7.025%;
 
-  /* Block Conainer */
+  /* Block Container */
   --block-container-width-s: 800px;
   --block-container-width-m: 1000px;
   --block-container-width-l: 1200px;
@@ -100,11 +101,20 @@
 
 @media (min-width: 1200px) {
   :root {
-    --type-heading-xl-size: 48px;
-    --type-heading-l-size: 36px;
-    --type-heading-m-size: 26px;
-    --type-heading-s-size: 24px;
-    --type-heading-xs-size: 22px;
+    --type-heading-xxxl-size: 80px;
+    --type-heading-xxxl-lh: 88px;
+    --type-heading-xxl-size: 44px;
+    --type-heading-xxl-lh: 55px;
+    --type-heading-xl-size: 36px;
+    --type-heading-xl-lh: 45px;
+    --type-heading-l-size: 28px;
+    --type-heading-l-lh: 35px;
+    --type-heading-m-size: 24px;
+    --type-heading-m-lh: 30px;
+    --type-heading-s-size: 20px;
+    --type-heading-s-lh: 25px;
+    --type-heading-xs-size: 18px;
+    --type-heading-xs-lh: 22.5px;
   }
 }
 
@@ -132,49 +142,49 @@ body {
 .heading-XS {
   font-size: var(--type-heading-xs-size);
   line-height: var(--type-heading-xs-lh);
-  font-weight: var(--type-heading-all-weight);
+  font-weight: var(--type-heading-weight);
   margin: 0;
 }
 
 .heading-S {
   font-size: var(--type-heading-s-size);
   line-height: var(--type-heading-s-lh);
-  font-weight: var(--type-heading-all-weight);
+  font-weight: var(--type-heading-weight);
   margin: 0;
 }
 
 .heading-M {
   font-size: var(--type-heading-m-size);
   line-height: var(--type-heading-m-lh);
-  font-weight: var(--type-heading-all-weight);
+  font-weight: var(--type-heading-weight);
   margin: 0;
 }
 
 .heading-L {
   font-size: var(--type-heading-l-size);
   line-height: var(--type-heading-l-lh);
-  font-weight: var(--type-heading-all-weight);
+  font-weight: var(--type-heading-weight);
   margin: 0;
 }
 
 .heading-XL {
   font-size: var(--type-heading-xl-size);
   line-height: var(--type-heading-xl-lh);
-  font-weight: var(--type-heading-all-weight);
+  font-weight: var(--type-heading-weight);
   margin: 0;
 }
 
 .heading-L {
   font-size: var(--type-heading-l-size);
   line-height: var(--type-heading-l-lh);
-  font-weight: var(--type-heading-all-weight);
+  font-weight: var(--type-heading-weight);
   margin: 0;
 }
 
 .heading-XL {
   font-size: var(--type-heading-xl-size);
   line-height: var(--type-heading-xl-lh);
-  font-weight: var(--type-heading-all-weight);
+  font-weight: var(--type-heading-weight);
   margin: 0;
 }
 
@@ -203,16 +213,16 @@ body {
 .detail-M {
   font-size: var(--type-detail-m-size);
   line-height: var(--type-detail-m-lh);
-  font-weight: var(--type-detail-all-weight);
-  text-transform: var(--type-transform);
+  font-weight: var(--type-heading-weight);
+  text-transform: uppercase;
   margin: 0;
 }
 
 .detail-L {
   font-size: var(--type-detail-l-size);
   line-height: var(--type-detail-l-lh);
-  font-weight: var(--type-detail-all-weight);
-  text-transform: var(--type-transform);
+  font-weight: var(--type-heading-weight);
+  text-transform: uppercase;
   margin: 0;
 }
 
