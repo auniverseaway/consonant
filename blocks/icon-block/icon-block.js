@@ -10,40 +10,17 @@
  * governing permissions and limitations under the License.
  */
 
+import { decorateContent } from "../../scripts/decorate.js";
+
 /*
  * Icon Block - v0.0.1
  */
-
-function decorateButtons(el) {
-    const buttons = el.querySelectorAll('em a, strong a');
-    buttons.forEach((button) => {
-        const parent = button.parentElement;
-        const buttonType = parent.nodeName === 'STRONG' ? 'blue' : 'outline';
-        button.classList.add('con-button', buttonType);
-        parent.insertAdjacentElement('afterend', button);
-        parent.remove();
-    });
-    if (buttons.length > 0) {
-        buttons[0].closest('p').classList.add('action-area');
-    }
-}
-
-function decorateText(el, vertical) {
-    const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
-    const heading = headings[headings.length - 1];
-    if (vertical) heading.classList.add('heading-S');
-    else heading.classList.add('heading-XL');
-    heading.nextElementSibling.classList.add('body-M');
-    if (heading.previousElementSibling) {
-        heading.previousElementSibling.classList.add('icon-img');
-    }
-}
 
 function decorateBackground(el) {
     const background = el[0];
     background.classList.add('background');
     if (!background.querySelector(':scope img')) {
-        background.children[0].style.display = "none";
+        background.children[0].style.display = 'none';
         background.setAttribute('style', `background: ${background.textContent}`);
     }
 }
@@ -54,10 +31,10 @@ export default function init(el) {
     const foreground = children[children.length - 1];
     foreground.classList.add('foreground', 'container');
     for (let item of foreground.children) {
-        item.classList.add("text");
+        item.classList.add('text');
         const image = item.querySelector(':scope > div:not([class])');
         if (image) image.classList.add('image');
-        decorateButtons(item);
-        decorateText(item, el.classList.contains('vertical'));
+        const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
+        decorateContent(item, ['icon-img', headingClass, 'body-M'])
     }
 }
