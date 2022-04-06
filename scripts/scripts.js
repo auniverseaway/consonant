@@ -125,6 +125,17 @@ function wrapSections(sections) {
 }
 
 /**
+ * Sanitizes a name for use as class name.
+ * @param {*} name The unsanitized name
+ * @returns {string} The class name
+ */
+export function toClassName(name) {
+  return name && typeof name === 'string'
+    ? name.toLowerCase().replace(/[^0-9a-z]/gi, '-')
+    : '';
+}
+
+/**
  * Decorates a block.
  * @param {Element} block The block element
  */
@@ -149,6 +160,60 @@ export function decorateBlock(block) {
 }
 
 /**
+ * Extracts the config from a block.
+ * @param {Element} block The block element
+ * @returns {object} The block config
+ */
+export function readBlockConfig(block) {
+  const config = {};
+  block.querySelectorAll(':scope>div').forEach((row) => {
+    if (row.children) {
+      const cols = [...row.children];
+      if (cols[1]) {
+        const col = cols[1];
+        const name = toClassName(cols[0].textContent);
+        let value = '';
+        if (col.querySelector('a')) {
+          const as = [...col.querySelectorAll('a')];
+          if (as.length === 1) {
+            value = as[0].href;
+          } else {
+            value = as.map((a) => a.href);
+          }
+        } else if (col.querySelector('p')) {
+          const ps = [...col.querySelectorAll('p')];
+          if (ps.length === 1) {
+            value = ps[0].textContent;
+          } else {
+            value = ps.map((p) => p.textContent);
+          }
+        } else value = row.children[1].textContent;
+        config[name] = value;
+      }
+    }
+  });
+  return config;
+}
+
+/**
+ * Process section meta.
+ * @param {Element} section The container element
+ */
+export function processSectionMeta(section) {
+  const sectionMeta = section.querySelector('div.section-metadata');
+  if (sectionMeta) {
+    const meta = readBlockConfig(sectionMeta);
+    const keys = Object.keys(meta);
+    keys.forEach((key) => {
+      if (key === 'style') section.style = meta.style;
+      // if (key === 'style') section.classList.add(toClassName(meta.style));
+      else section.dataset[key] = meta[key];
+    });
+    sectionMeta.remove();
+  }
+}
+
+/**
  * Decorates all sections in a container element.
  * @param {Element} $main The container element
  */
@@ -156,6 +221,7 @@ export function decorateSections($main) {
   wrapSections($main.querySelectorAll(':scope > div'));
   $main.querySelectorAll(':scope > div.section-wrapper').forEach((section) => {
     section.setAttribute('data-section-status', 'initialized');
+    processSectionMeta(section);
   });
 }
 
