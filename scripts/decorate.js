@@ -28,7 +28,7 @@ export function decorateButtons(el) {
 export function decorateIcons(el) {
   const regex = /[^{\{]+(?=}\})/g; // {{value}}
   const placeholders = el.textContent.match(regex);
-  placeholders.forEach( (str) => {
+  placeholders.forEach((str) => {
     // todo: get this placeholder data from docs
     const svg = `<img width="40" alt="Adobe Illustrator CC icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/512px-Adobe_Illustrator_CC_icon.svg.png">`;
     const url = `#`;
@@ -66,12 +66,24 @@ export function decorateText(el, size) {
   }
 }
 
+// decorate text content in block by passing array of classes [ detail, heading, body ]
+export function decorateContent(el, classList) {
+  if (el && classList.length == 3) {
+    const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    const heading = headings[headings.length - 1];
+    heading.classList.add(classList[1]);
+    heading.nextElementSibling.classList.add(classList[2]);
+    if (heading.previousElementSibling) heading.previousElementSibling.classList.add(classList[0]);
+    decorateButtons(el);
+  }
+}
+
 export function getBlockSize(el) {
   if (el.classList.contains('medium')) {
     return 'medium';
-  }else if (el.classList.contains('large')) {
+  } else if (el.classList.contains('large')) {
     return 'large';
-  }else{
+  } else {
     return 'small';
   }
 }
