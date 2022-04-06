@@ -131,6 +131,13 @@ body {
   margin: 0;
 }
 
+.heading-S {
+  font-size: var(--type-heading-s-size);
+  line-height: var(--type-heading-s-lh);
+  font-weight: var(--type-heading-all-weight);
+  margin: 0;
+}
+
 .heading-M {
   font-size: var(--type-heading-m-size);
   line-height: var(--type-heading-m-lh);
