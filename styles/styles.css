@@ -61,11 +61,6 @@
   --type-code-s-size: 14px;
   --type-code-s-lh: 21px;
 
-  /* Block Container */
-  --block-container-width-s: 800px;
-  --block-container-width-m: 1000px;
-  --block-container-width-l: 1200px;
-
   /* Spacing */
   --spacing-xs: 8px;
   --spacing-s: 16px;
@@ -186,16 +181,6 @@ body {
   line-height: var(--type-heading-xl-lh);
   font-weight: var(--type-heading-weight);
   margin: 0;
-}
-
-@media (min-width: 1200px) {
-  :root {
-    --type-heading-xl-size: 48px;
-    --type-heading-l-size: 36px;
-    --type-heading-m-size: 26px;
-    --type-heading-s-size: 24px;
-    --type-heading-xs-size: 22px;
-  }
 }
 
 .body-M {
