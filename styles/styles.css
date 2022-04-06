@@ -18,27 +18,47 @@
   /* Typography */
   --type-transform: uppercase;
   --type-detail-all-weight: 700;
-  --type-detail-m-size: 12px;
-  --type-detail-m-lh: 15px;
+
+  --type-detail-xl-size: 20px;
+  --type-detail-xl-lh: 25px;
   --type-detail-l-size: 16px;
   --type-detail-l-lh: 20px;
+  --type-detail-m-size: 12px;
+  --type-detail-m-lh: 15px;
 
   --type-heading-all-weight: 700;
   --type-heading-xl-size: 36px;
   --type-heading-xl-lh: 45px;
   --type-heading-l-size: 28px;
-  --type-heading-l-lh: 32px;
+  --type-heading-l-lh: 35px;
   --type-heading-m-size: 24px;
   --type-heading-m-lh: 30px;
-  --type-heading-s-size: 22px;
-  --type-heading-s-lh: 28px;
+  --type-heading-s-size: 20px;
+  --type-heading-s-lh: 25px;
   --type-heading-xs-size: 18px;
-  --type-heading-xs-lh: 22px;
+  --type-heading-xs-lh: 22.5px;
 
+  --type-body-xxl-size: 28px;
+  --type-body-xxl-lh: 42px;
+  --type-body-xl-size: 22px;
+  --type-body-xl-lh: 33px;
+  --type-body-l-size: 20px;
+  --type-body-l-lh: 30px;
   --type-body-m-size: 18px;
   --type-body-m-lh: 27px;
   --type-body-s-size: 16px;
   --type-body-s-lh: 24px;
+  --type-body-xs-size: 14px;
+  --type-body-xs-lh: 21px;
+  --type-body-xxs-size: 12px;
+  --type-body-xxs-lh: 18px;
+
+  --type-code-l-size: 18px;
+  --type-code-l-lh: 27px;
+  --type-code-m-size: 16px;
+  --type-code-m-lh: 24px;
+  --type-code-s-size: 14px;
+  --type-code-s-lh: 21px;
 
   /* Spacing */
   --spacing-xs: 8px;
@@ -71,6 +91,16 @@
   --color-primary: #1473e6;
   --color-primary-darker: hsl(var(--hue), var(--saturation), calc(var(--light) - 10%));
   --color-primary-lighter: hsl(var(--hue), var(--saturation), calc(var(--light) + 20%));
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --type-heading-xl-size: 48px;
+    --type-heading-l-size: 36px;
+    --type-heading-m-size: 26px;
+    --type-heading-s-size: 24px;
+    --type-heading-xs-size: 22px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -132,12 +162,6 @@ body {
 .body-M {
   font-size: var(--type-body-m-size);
   line-height: var(--type-body-m-lh);
-  margin: 0;
-}
-
-.body-S {
-  font-size: var(--type-body-s-size);
-  line-height: var(--type-body-s-lh);
   margin: 0;
 }
 
