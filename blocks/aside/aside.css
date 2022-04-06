@@ -92,10 +92,15 @@
     width: 100%;
 }
 
-.aside .foreground.container img.secondary {
-    max-width: 234px;
+.aside .foreground.container .product-area {
     height: var(--spacing-xl);
     margin-bottom: var(--spacing-m);
+}
+
+.aside .foreground.container .product-area img {
+    max-width: 234px;
+    height: var(--spacing-xl);
+    width: auto;
     object-fit: cover;
     object-position: left top;
 }
@@ -317,7 +322,7 @@
         flex: 0 0 41%;
     }
 
-    .aside .foreground.container img.secondary {
+    .aside .foreground.container .product-area img {
         max-width: 400px;
     }
 

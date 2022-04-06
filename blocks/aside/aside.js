@@ -14,7 +14,7 @@
 * Aside - v0.0.1
 */
 
-import { decorateContent } from "../../scripts/decorate.js";
+import { decorateContent, decorateIcons } from "../../scripts/decorate.js";
 
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
@@ -34,8 +34,9 @@ export default function init(el) {
     }
 
     text?.classList.add('text');
-    text?.querySelector(':scope img')?.classList.add('secondary');
+    text?.querySelector(':scope img')?.closest('p')?.classList.add('product-area');
     foreground?.querySelector(':scope > div:not([class])')?.classList.add('image');
 
     decorateContent(text, ['detail-M', 'heading-XL', 'body-S']);
+    decorateIcons(el, false);
 }
