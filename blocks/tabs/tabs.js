@@ -1,12 +1,11 @@
 // Tabs JS
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role
 
-function initTabs() {
-  const tabs = document.querySelectorAll('[role="tab"]');
-  const tabLists = document.querySelectorAll('[role="tablist"]');
+function initTabs(e) {
+  const tabs = e.querySelectorAll('[role="tab"]');
+  const tabLists = e.querySelectorAll('[role="tablist"]');
 
   tabLists.forEach( tabList => {
-
     let lastKnownScrollPosition = 0;
     let ticking = false;
     tabList.addEventListener('scroll', function(e) {
@@ -41,7 +40,6 @@ function initTabs() {
             tabFocus = tabs.length - 1;
           }
         }
-
         tabs[tabFocus].setAttribute("tabindex", 0);
         tabs[tabFocus].focus();
       }
@@ -49,18 +47,14 @@ function initTabs() {
 
   });
 
-
   // Add a click event handler to each tab
   tabs.forEach(tab => {
     tab.addEventListener("click", changeTabs);
   });
 
-
 }
 
 const doSomething = (scrollPos, scrollWidth, offsetWidth) => {
-
-
   // let tabListBound = horizontallyBound(tabsListContainer, tabIt);
   console.log('scrollPos, scrollWidth, offsetWidth');
   console.log(scrollPos, scrollWidth, offsetWidth);
@@ -132,6 +126,8 @@ function changeTabs(e) {
     .removeAttribute("hidden");
 }
 
+let initCount = 0;
+
 const init = (element) => {
   // const tabListBg = element.querySelector(':scope > div:first-of-type > div');
   // tabListBg.classList.add('tabListBg');
@@ -159,18 +155,18 @@ const init = (element) => {
       const tabBtn = document.createElement('button');
       tabBtn.setAttribute('role', 'tab');
       tabBtn.setAttribute('aria-selected', (i === 0) ? 'true' : 'false');
-      tabBtn.setAttribute('aria-controls', `panel-${i}`);
+      tabBtn.setAttribute('aria-controls', `panel-${initCount}-${i}`);
       tabBtn.setAttribute('tabindex', (i > 0) ? '0' : '-1');
-      tabBtn.id = `tab-${i}`;
+      tabBtn.id = `tab-${initCount}-${i}`;
       tabBtn.innerText = rowTitle.textContent;
       rowTitle.remove();
       tabListContainer.append(tabBtn);
 
       const rowContentParent = rowContent.parentNode;
-      rowContentParent.id = `panel-${i}`;
+      rowContentParent.id = `panel-${initCount}-${i}`;
       rowContentParent.setAttribute('role', 'tabpanel');
       rowContentParent.setAttribute('tabindex', '0');
-      rowContentParent.setAttribute('aria-labelledby', `tab-${i}`);
+      rowContentParent.setAttribute('aria-labelledby', `tab-${initCount}-${i}`);
       if(i > 0) {
         rowContentParent.setAttribute('hidden', '');
       }
@@ -180,7 +176,8 @@ const init = (element) => {
     element.prepend(tabList);
     element.append(tabContentContainer);
   }
-  initTabs();
+  initCount++;
+  initTabs(element);
 };
 
 export default init;
