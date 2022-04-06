@@ -234,6 +234,7 @@
         position: absolute;
         right: 0;
         object-fit: cover;
+        object-position: center;
     }
 
     .aside.split .foreground.container {
@@ -347,5 +348,9 @@
 
     .aside.augmented-image {
         min-height: 700px;
+    }
+
+    .aside.augmented-image .foreground.container .image img {
+        width: 130%;
     }
 }
