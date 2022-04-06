@@ -275,7 +275,7 @@
 
     /* Augmented Image */
 
-    .aside.augmented-image .background.augmented {
+    .aside.augmented-image .background {
         clip-path: inset(19% 0);
     }
 
