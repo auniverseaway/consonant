@@ -1,0 +1,3 @@
+a[href*="http://cmiqueo.corp.adobe.com"] {
+    display: none;
+}
