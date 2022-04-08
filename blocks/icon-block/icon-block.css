@@ -40,7 +40,7 @@
 }
 
 .icon-block .foreground.container {
-    padding-top: 80px;
+    padding-top: var(--spacing-xxl);
     display: flex;
     position: relative;
     align-items: baseline;
@@ -54,7 +54,7 @@
     flex-wrap: wrap;
     align-content: center;
     width: 100%;
-    margin-bottom: 80px;
+    margin-bottom: var(--spacing-xxl);
 }
 
 .icon-block .foreground.container .text .product-area {
@@ -108,7 +108,7 @@
 
 .icon-block.vertical .foreground.container .text .product-area {
     margin: 0;
-    margin-bottom: 8px;
+    margin-bottom: var(--spacing-xs);
 }
 
 .icon-block.vertical .foreground.container .text .action-area>a:not(.con-button) {
@@ -137,7 +137,7 @@
         flex: 1 1 45%;
     }
 
-
+    /* 3up tablet layout with flexbox */
     .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text:last-child {
         padding-right: 55%;
     }
