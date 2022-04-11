@@ -239,7 +239,7 @@
         position: absolute;
         right: 0;
         object-fit: cover;
-        object-position: center;
+        object-position: center top;
     }
 
     .aside.split .foreground.container {
