@@ -18,7 +18,7 @@
 
 .tabs {
   position: relative;
-  margin: var(--spacing-m) 0 var(--spacing-m) 0;
+  margin: 16px 0 16px 0;
 }
 
 .tabs div[role="tablist"]{
@@ -94,7 +94,7 @@ div[role="tablist"] button:hover{
   color: var(--tabs-active-text-color-light);
 }
 div[role="tablist"] button:active{
-  color: var(--link-color);
+  color: #1473e6;
 }
 
 div[role="tablist"] button[aria-selected="true"] {
@@ -118,7 +118,7 @@ div[role="tablist"] button[aria-selected="true"] {
   border-bottom-color: var(--tabs-border-hover-color-light);
 }
 .tabs.quiet div[role="tablist"] button[aria-selected="true"]{
-  border-bottom-color: var(--tabs-border-hover-color-light);
+  border-bottom-color: #1473e6;
 }
 
 /*invoke tabs as media (uncomment to enable)*/
